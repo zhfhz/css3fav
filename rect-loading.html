@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Button</title>
+    <style>
+        html,body {
+            background-color: gray;
+        }
+        @keyframes toRight {
+            0% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        @keyframes toLeft {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        @keyframes toTop {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+        @keyframes toBottom {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100%);
+            }
+        }
+        .button {
+            position: relative;
+            display: inline-block;
+            padding: 10px;
+            font-size: 80px;
+            color: transparent;
+            /*text-shadow: 1px 1px 0 #eee;*/
+            box-shadow: inset 0 0 0 4px #eee;
+            background: linear-gradient(-90deg, red 0%, red 50%, black 50%, black 100%);
+            overflow: hidden;
+        }
+        .text {
+            background: linear-gradient(90deg, red 0%, red 50%, black 50%, black 100%);
+            -webkit-background-clip: text,content;
+        }
+        [class^=tail-] {
+            position: absolute;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        .tail-1-1 {
+            width: 100%;
+            height: 4px;
+            left: 0;
+            right: 0;
+            top: 0;
+            background: linear-gradient(90deg, transparent 0%, red 100%);
+            transform: translateX(-100%);
+            animation-name: toRight;
+            animation-duration: 2s;
+            animation-delay: 0s;
+        }
+        .tail-2-1 {
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, black 0%, transparent 100%);
+            bottom: 0;
+            transform: translateX(100%);
+            animation-name: toLeft;
+            animation-duration: 2s;
+            animation-delay: 2s;
+        }
+
+        .tail-2-2 {
+            width: 4px;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            background: linear-gradient(0deg, transparent 0%, black 100%);
+            transform: translateY(100%);
+            animation-name: toTop;
+            animation-duration: 2s;
+            animation-delay: 1s;
+        }
+        .tail-1-2 {
+            width: 4px;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(0deg, red 0%, transparent 100%);
+            transform: translateY(-100%);
+            animation-name: toBottom;
+            animation-duration: 2s;
+            animation-delay: 1s;
+        }
+    </style>
+</head>
+<body>
+<div class="button">
+    <div class="tail-1-1"></div>
+    <div class="tail-1-2"></div>
+    <div class="tail-2-1"></div>
+    <div class="tail-2-2"></div>
+    <div class="text">LOADING</div>
+</div>
+</body>
+</html>

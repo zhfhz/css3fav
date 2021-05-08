@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rotate Card</title>
+    <style>
+        @keyframes cardCover {
+            0% {
+                transform: scale3d(1,1,1);
+            }
+            50% {
+                transform: scale3d(0.5,0.5,0.5);
+            }
+            100%{
+                transform: scale3d(1,1,1);
+            }
+        }
+        @keyframes cardCoverHover {
+            0% {
+                transform: scale(1) rotateY(0deg);
+            }
+            50%{
+                transform: scale(0.5) rotateY(90deg);
+            }
+            100%{
+                transform: scale(1) rotateY(180deg);
+            }
+        }
+        html,body {
+            background-color: gray;
+        }
+        .container {
+            padding: 100px;
+        }
+        .card {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            perspective: 1000px;
+            -webkit-perspective: 1000px;
+            perspective-origin: center center;
+            transform-style: preserve-3d;
+        }
+        .card-cover {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: blue;
+            backface-visibility: hidden;
+            /*background-image:*/
+            /*        linear-gradient(to left top, red 0%, transparent 100%),*/
+            /*        linear-gradient(to right top, green 0%, transparent 100%),*/
+            /*        linear-gradient(to bottom right, blue 0%, transparent 100%),*/
+            /*        linear-gradient(to bottom left, black 0%, transparent 100%);*/
+            transform: rotate3d(0,1,0,0deg);
+            transition: all 0.2s linear;
+        }
+        .card-content {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color:red;
+            backface-visibility: hidden;
+            /*background-image:*/
+            /*        linear-gradient(to left top, red 0%, transparent 100%),*/
+            /*        linear-gradient(to right top, green 0%, transparent 100%),*/
+            /*        linear-gradient(to bottom right, blue 0%, transparent 100%),*/
+            /*        linear-gradient(to bottom left, black 0%, transparent 100%);*/
+            transition: all 0.2s linear;
+            transform: rotate3d(0,1,0,180deg);
+        }
+        .container:hover .card .card-cover{
+            transform: rotate3d(0,1,0,180deg);
+        }
+        .container:hover .card .card-content{
+            transform: rotate3d(0,1,0,360deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-cover">
+                这是封面
+            </div>
+            <div class="card-content">
+                这是内容
+            </div>
+        </div>
+    </div>
+</body>
+</html>
